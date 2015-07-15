@@ -194,6 +194,37 @@
     });
   }
 
+  var agregar = $('#add'),
+  cerrar  = $('#close'),
+  buscador = $('.Search');
+
+  function agregarCiudad (event){
+    event.preventDefault();
+    buscador.addClass('visible');
+    agregar.addClass('cerrar');
+  };
+
+  function cerrarFormulario (event){
+    event.preventDefault();
+    buscador.removeClass('visible');
+    agregar.removeClass('cerrar');
+    $('#Search__status').text('');
+  };
+
+  function teclado(tecla) {
+    if(buscador.hasClass('visible')){
+      var codigo = tecla.keyCode;
+      if(codigo == 27){
+        buscador.removeClass('visible');
+        agregar.removeClass('cerrar');
+      }
+    }
+  };
+
+  document.addEventListener("keydown", teclado);
+  $(cerrar).on('click', cerrarFormulario);
+  $(agregar).on('click', agregarCiudad);
+
   // -- Inicia la aplicación ---------------------------------------------------
 
   onLoad();

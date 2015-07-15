@@ -1,90 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Platzi Weather</title>
-  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="topbar"></div>
-<header class="main-header">
-  <h1>PlatziWeather</h1>
-  <h2>An awesome way to see how we burn by global warming</h2>
-</header>
-<div class="container">
-
-  <a href="#" class="add btn" id="add"></a>
-  <form action="" class="Search">
-    <a href="#" class="close btn" id="close"></a>
-    <input type="text" data-input="cityAdd" class="Search__text" placeholder="Agregar una nueva cuidad">
-    <div class="Search__status" id="Search__status"></div>
-    <input type="submit" data-button="add" class="Search__btn btn" value="Añadir Ciudad" >
-    <button data-saved-cities class="Search__cities btn">Ver ciudades guardadas</button>
-  </form>
-
-  <div class="loader">Geolocalizando tu posición, por favor espere...</div>
-
-  <main class="cards-group">
-    <template id="template--city">
-      <div class="card">
-        <header class="card__header">
-          <h3 data-city class="card__title">Chachapa</h3>
-          <h4 data-time class="card__time">18:45:46 </h4>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>Platzi Weather</title>
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="topbar"></div>
+        <header class="main-header">
+        <h1>PlatziWeather</h1>
+        <h2>An awesome way to see how we burn by global warming</h2>
         </header>
-        <div class="card__info">
-          <span data-temp='min' class="card__mint">23</span>
-          <span data-temp='max' class="card__maxt">23.5</span>
-          <div class="card__temp-actual">
-            <img data-icon src="" class="card__image">
-            <span data-temp='current' class="card__temp">23.1</span>
-          </div>
+        <div class="container">
+            <a href="#" class="add btn" id="add"></a>
+            <form action="" class="Search">
+                <a href="#" class="close btn" id="close"></a>
+                <input type="text" data-input="cityAdd" class="Search__text" placeholder="Agregar una nueva cuidad">
+                <p class="Search__status" id="Search__status"></p>
+                <input type="submit" data-button="add" class="Search__btn btn" value="Añadir Ciudad" >
+                <button data-saved-cities class="Search__cities btn">Ver ciudades guardadas</button>
+            </form>
+
+            <div class="loader">Geolocalizando tu posición, por favor espere...</div>
+
+            <main class="cards-group">
+                <template id="template--city">
+                    <div class="card">
+                        <header class="card__header">
+                            <h3 data-city class="card__title">Chachapa</h3>
+                            <h4 data-time class="card__time">18:45:46 </h4>
+                        </header>
+                        <div class="card__info">
+                            <span data-temp='min' class="card__mint">23</span>
+                            <span data-temp='max' class="card__maxt">23.5</span>
+                            <div class="card__temp-actual">
+                                <img data-icon src="" class="card__image">
+                                <span data-temp='current' class="card__temp">23.1</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </main>
+            <section id="cards" class="cards_container"></section>
         </div>
-      </div>
-    </template>
 
-  </main>
-  <section id="cards" class="cards_container"></section>
-
-</div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/index.js"></script>
-<script>
-  (function(){
-    var agregar = $('#add'),
-        cerrar  = $('#close'),
-        buscador = $('.Search');
-    
-      function agregarCiudad (event){
-        event.preventDefault();
-        buscador.addClass('visible');
-        agregar.addClass('cerrar');
-      };
-
-      function cerrarFormulario (event){
-        event.preventDefault();
-        buscador.removeClass('visible');
-        agregar.removeClass('cerrar');
-        $('#Search__status').text('');
-
-      };
-        
-      function teclado(tecla) {
-        if(buscador.hasClass('visible')){
-          var codigo = tecla.keyCode;
-          if(codigo == 27){
-              buscador.removeClass('visible');
-              agregar.removeClass('cerrar');
-            }
-          }
-        };
-
-      document.addEventListener("keydown", teclado);
-      $(cerrar).on('click', cerrarFormulario);
-      $(agregar).on('click', agregarCiudad);
-
-  })();
-</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
