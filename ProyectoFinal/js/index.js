@@ -87,6 +87,7 @@
     cityWeather.description = data.weather[0].description;
     cityWeather.main        = data.weather[0].main;
 
+    // render
     renderTemplate(cityWeather, null);
   }
 
@@ -116,7 +117,7 @@
 
     $(loader).hide();
     $(formAddNuevaCiudad).show();
-    $($body).append(clone);
+    $("#cards").append(clone);
   }
 
   function addNewCity(e) {
@@ -126,7 +127,8 @@
 
   function getWeatherNewCity(data) {
     if(data.cod && data.cod == '404') {
-      alert("Error: No existe esa ciudad en la base de datos")
+        $('#Search__status').text("Error: No existe esta ciudad en la base de datos");
+      // alert("Error: No existe esa ciudad en la base de datos")
     }
 
     $.getJSON(API_WORLDTIME + $(nombreNuevaCiudad).val(), function(response) {
@@ -144,6 +146,7 @@
       cityWeather.sunset      = data.sys.sunset;
       cityWeather.description = data.weather[0].description;
       cityWeather.main        = data.weather[0].main;
+
 
       renderTemplate(cityWeather, response.data.time_zone[0].localtime);
 
